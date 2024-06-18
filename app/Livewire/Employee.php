@@ -4,12 +4,17 @@ namespace App\Livewire;
 use App\Models\Pegawai;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Employee extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     public $name;
     public $email;
     public $alamat;
+
 
     public function store()
     {
@@ -34,6 +39,7 @@ class Employee extends Component
 
     public function render()
     {
-        return view('livewire.employee');
+        $AllPegawai = Pegawai::orderBy('name', 'asc')->paginate(2);
+        return view('livewire.employee', compact('AllPegawai'));
     }
 }

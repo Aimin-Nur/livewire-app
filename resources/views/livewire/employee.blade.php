@@ -2,7 +2,7 @@
     <div class="container">
         @if ($errors->any())
             <div class="pt-3">
-                <div class="alert alert-danger">
+                <div class="alert alert-success">
                     <ul>
                         @foreach ($errors->all() as $item )
                             <li>{{$item}}</li>
@@ -13,7 +13,7 @@
         @endif
         <!-- START FORM -->
         <div class="my-3 p-3 bg-body rounded shadow-sm">
-            <form wire:submit.prevent="store">
+            <form>
                 <div class="mb-3 row">
                     <label for="name" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
@@ -44,6 +44,7 @@
         <!-- START DATA -->
         <div class="my-3 p-3 bg-body rounded shadow-sm">
             <h1>Data Pegawai</h1>
+            {{$AllPegawai->links()}}
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -55,17 +56,20 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($AllPegawai as $key => $pegawai)
                     <tr>
-                        <td>1</td>
-                        <td>Muhammad</td>
-                        <td>muhammad@gmail.com</td>
-                        <td>Yogyakarta</td>
+                        <td>{{$AllPegawai->firstItem() + $key}}</td>
+                        <td>{{$pegawai->name}}</td>
+                        <td>{{$pegawai->email}}</td>
+                        <td>{{$pegawai->alamat}}</td>
                         <td>
                             <a href="" class="btn btn-warning btn-sm">Edit</a>
                             <a href="" class="btn btn-danger btn-sm">Del</a>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
+                {{$AllPegawai->links()}}
             </table>
 
         </div>
