@@ -15,9 +15,9 @@
         <div class="my-3 p-3 bg-body rounded shadow-sm">
             <form wire:submit.prevent="store">
                 <div class="mb-3 row">
-                    <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                    <label for="name" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" wire:model="nama">
+                        <input type="text" class="form-control" wire:model="name">
                     </div>
                 </div>
                 <div class="mb-3 row">
